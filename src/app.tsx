@@ -221,9 +221,6 @@ const App = () => {
           <div className="max-w-3xl mx-auto space-y-8 py-12">
             {/* Welcome / Empty State */}
             <div className="text-center space-y-4">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg mb-4">
-                <span className="text-3xl">🏔️</span>
-              </div>
               <h2 className={`text-2xl font-semibold ${darkMode ? "text-white" : "text-gray-900"}`}>
                 Welcome to Basecamp
               </h2>
