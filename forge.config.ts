@@ -26,14 +26,14 @@ const config: ForgeConfig = {
         {
           // `entry` is just an alias for `build.lib.entry` in the corresponding file of `config`.
           entry: 'src/main.ts',
-          config: 'vite.main.config.ts',
+          config: 'vite.main.config.mts',
           target: 'main',
         }
       ],
       renderer: [
         {
           name: 'main_window',
-          config: 'vite.renderer.config.ts',
+          config: 'vite.renderer.config.mts',
         },
       ],
     }),
