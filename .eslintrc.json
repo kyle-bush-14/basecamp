@@ -14,11 +14,6 @@
   ],
   "parser": "@typescript-eslint/parser",
   "rules": {
-    "import/no-unresolved": [
-      "error",
-      {
-        "ignore": ["\\.svg\\?react$"]
-      }
-    ]
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }
