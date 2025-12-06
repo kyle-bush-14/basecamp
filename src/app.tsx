@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
+import { HashRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import "./index.css";
 
-import { MessageCircle } from "lucide-react";
-import { Box } from "lucide-react";
-import { Server } from "lucide-react";
-import { Activity } from "lucide-react";
-import { Settings } from "lucide-react";
-import { Moon } from "lucide-react";
-import { Sun } from "lucide-react";
-import { Send } from "lucide-react";
+import { MessageCircle, Box, Server, Activity, Settings, Moon, Sun } from "lucide-react";
 
-const App = () => {
+import Chat from "./pages/Chat";
+import Models from "./pages/Models";
+
+const Layout = () => {
   const [darkMode, setDarkMode] = useState(true);
-  const [input, setInput] = useState("");
+  const location = useLocation();
 
   // Toggle dark mode class on body or wrapper
   useEffect(() => {
@@ -23,6 +20,8 @@ const App = () => {
       document.documentElement.classList.remove("dark");
     }
   }, [darkMode]);
+
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <div
@@ -39,21 +38,42 @@ const App = () => {
         </div>
 
         <nav className="flex-1 px-2 space-y-1">
-          <button
-            className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group ${darkMode ? "hover:bg-gray-800 text-gray-300 hover:text-white" : "hover:bg-gray-100 text-gray-700 hover:text-gray-900"}`}
-          >
-            <MessageCircle className="size-5" />
-            New Chat
-          </button>
+          <Link to="/">
+            <button
+              className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group ${
+                isActive("/")
+                  ? darkMode
+                    ? "bg-gray-800 text-white"
+                    : "bg-gray-100 text-gray-900"
+                  : darkMode
+                    ? "hover:bg-gray-800 text-gray-300 hover:text-white"
+                    : "hover:bg-gray-100 text-gray-700 hover:text-gray-900"
+              }`}
+            >
+              <MessageCircle className="size-5" />
+              New Chat
+            </button>
+          </Link>
 
           <div className="pt-4 pb-2 px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Tools</div>
 
-          <button
-            className={`w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${darkMode ? "hover:bg-gray-800 text-gray-400 hover:text-white" : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"}`}
-          >
-            <Box className="size-5" />
-            Models
-          </button>
+          <Link to="/models">
+            <button
+              className={`w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                isActive("/models")
+                  ? darkMode
+                    ? "bg-gray-800 text-white"
+                    : "bg-gray-100 text-gray-900"
+                  : darkMode
+                    ? "hover:bg-gray-800 text-gray-400 hover:text-white"
+                    : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"
+              }`}
+            >
+              <Box className="size-5" />
+              Models
+            </button>
+          </Link>
+
           <button
             className={`w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${darkMode ? "hover:bg-gray-800 text-gray-400 hover:text-white" : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"}`}
           >
@@ -87,56 +107,20 @@ const App = () => {
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col relative overflow-hidden">
-        {/* Chat Area */}
-        <div className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth">
-          <div className="max-w-3xl mx-auto space-y-8 py-12">
-            {/* Welcome / Empty State */}
-            <div className="text-center space-y-4">
-              <h2 className={`text-2xl font-semibold ${darkMode ? "text-white" : "text-gray-900"}`}>
-                Welcome to Basecamp
-              </h2>
-              <p className={`text-base ${darkMode ? "text-gray-400" : "text-gray-600"}`}>
-                Start a conversation with an LLM of your choice.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Input Area */}
-        <div className="p-4 border-t border-gray-200 dark:border-gray-800 bg-transparent backdrop-blur-sm">
-          <div className="max-w-3xl mx-auto relative">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Message..."
-              className={`w-full pl-4 pr-12 py-3.5 rounded-xl border focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all shadow-sm ${
-                darkMode
-                  ? "bg-gray-900 border-gray-700 text-white placeholder-gray-500 focus:border-blue-500/50"
-                  : "bg-white border-gray-200 text-gray-900 placeholder-gray-400 focus:border-blue-500"
-              }`}
-            />
-            <button
-              className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-lg transition-colors ${
-                input.trim()
-                  ? "bg-blue-600 text-white hover:bg-blue-700"
-                  : darkMode
-                    ? "text-gray-600 bg-gray-800"
-                    : "text-gray-400 bg-gray-100"
-              }`}
-              disabled={!input.trim()}
-            >
-              <Send className="size-5" />
-            </button>
-          </div>
-          <div className="text-center mt-2">
-            <p className={`text-xs ${darkMode ? "text-gray-500" : "text-gray-400"}`}>
-              AI can make mistakes. Please verify important information.
-            </p>
-          </div>
-        </div>
+        <Routes>
+          <Route path="/" element={<Chat />} />
+          <Route path="/models" element={<Models />} />
+        </Routes>
       </main>
     </div>
+  );
+};
+
+const App = () => {
+  return (
+    <HashRouter>
+      <Layout />
+    </HashRouter>
   );
 };
 

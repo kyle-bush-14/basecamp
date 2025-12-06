@@ -46,11 +46,15 @@
     "vite-plugin-svgr": "^4.5.0"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.71.2",
     "@tailwindcss/vite": "^4.1.17",
     "electron-squirrel-startup": "^1.0.1",
+    "electron-store": "^11.0.2",
     "lucide-react": "^0.556.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-router": "^7.10.1",
+    "react-router-dom": "^7.10.1",
     "tailwindcss": "^4.1.17"
   }
 }

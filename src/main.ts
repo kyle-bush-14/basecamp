@@ -1,11 +1,14 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
 import path from "node:path";
 import started from "electron-squirrel-startup";
+import Store from "electron-store";
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (started) {
   app.quit();
 }
+
+const store = new Store();
 
 const createWindow = () => {
   // Create the browser window.
@@ -13,6 +16,9 @@ const createWindow = () => {
     width: 800,
     height: 600,
     autoHideMenuBar: true,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
   // and load the index.html of the app.
@@ -22,6 +28,18 @@ const createWindow = () => {
     mainWindow.loadFile(path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`));
   }
 };
+
+ipcMain.handle("electron-store-get", async (event, val) => {
+  return store.get(val);
+});
+
+ipcMain.handle("electron-store-set", async (event, key, val) => {
+  return store.set(key, val);
+});
+
+ipcMain.handle("electron-store-delete", async (event, key) => {
+  return store.delete(key);
+});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
