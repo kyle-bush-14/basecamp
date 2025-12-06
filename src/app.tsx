@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 
-import PlusIcon from "../svg/plus.svg?react";
-import BoxIcon from "../svg/box.svg?react";
-import ServerIcon from "../svg/server.svg?react";
-import ActivityIcon from "../svg/activity.svg?react";
-import SettingsIcon from "../svg/settings.svg?react";
-import MoonIcon from "../svg/moon.svg?react";
-import SunIcon from "../svg/sun.svg?react";
-import SendIcon from "../svg/send.svg?react";
+import { MessageCircle } from "lucide-react";
+import { Box } from "lucide-react";
+import { Server } from "lucide-react";
+import { Activity } from "lucide-react";
+import { Settings } from "lucide-react";
+import { Moon } from "lucide-react";
+import { Sun } from "lucide-react";
+import { Send } from "lucide-react";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -42,7 +42,7 @@ const App = () => {
           <button
             className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 group ${darkMode ? "hover:bg-gray-800 text-gray-300 hover:text-white" : "hover:bg-gray-100 text-gray-700 hover:text-gray-900"}`}
           >
-            <PlusIcon />
+            <MessageCircle className="size-5" />
             New Chat
           </button>
 
@@ -51,19 +51,19 @@ const App = () => {
           <button
             className={`w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${darkMode ? "hover:bg-gray-800 text-gray-400 hover:text-white" : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"}`}
           >
-            <BoxIcon />
+            <Box className="size-5" />
             Models
           </button>
           <button
             className={`w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${darkMode ? "hover:bg-gray-800 text-gray-400 hover:text-white" : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"}`}
           >
-            <ServerIcon />
+            <Server className="size-5" />
             MCP
           </button>
           <button
             className={`w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${darkMode ? "hover:bg-gray-800 text-gray-400 hover:text-white" : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"}`}
           >
-            <ActivityIcon />
+            <Activity className="size-5" />
             Usage
           </button>
         </nav>
@@ -72,14 +72,14 @@ const App = () => {
           <button
             className={`w-full flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${darkMode ? "hover:bg-gray-800 text-gray-400 hover:text-white" : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"}`}
           >
-            <SettingsIcon />
+            <Settings className="size-5" />
             Settings
           </button>
           <button
             onClick={() => setDarkMode(!darkMode)}
             className={`w-full flex items-center gap-3 px-3 py-2 mt-1 text-sm font-medium rounded-lg transition-all duration-200 ${darkMode ? "hover:bg-gray-800 text-gray-400 hover:text-white" : "hover:bg-gray-100 text-gray-600 hover:text-gray-900"}`}
           >
-            {darkMode ? <SunIcon /> : <MoonIcon />}
+            {darkMode ? <Sun className="size-5" /> : <Moon className="size-5" />}
             {darkMode ? "Light Mode" : "Dark Mode"}
           </button>
         </div>
@@ -126,7 +126,7 @@ const App = () => {
               }`}
               disabled={!input.trim()}
             >
-              <SendIcon />
+              <Send className="size-5" />
             </button>
           </div>
           <div className="text-center mt-2">
