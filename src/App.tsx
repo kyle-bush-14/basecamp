@@ -1,7 +1,8 @@
 import type { FC } from "react";
+import Sidebar from "./Sidebar";
 
 const App: FC = () => {
-  return <p className="text-3xl">Hello world!</p>;
+  return <Sidebar />;
 };
 
 export default App;
