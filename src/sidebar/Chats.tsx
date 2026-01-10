@@ -3,7 +3,7 @@ import { MessageCircleIcon } from "lucide-react";
 
 const Chats: FC = () => {
   return (
-    <button className="flex flex-row gap-2 items-center text-stone-700 py-2 px-3 rounded-lg hover:bg-stone-200">
+    <button className="flex flex-row items-center gap-2 rounded-lg px-3 py-2 text-stone-700 hover:bg-stone-200">
       <MessageCircleIcon />
       <p>Chats</p>
     </button>

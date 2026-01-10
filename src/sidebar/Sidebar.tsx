@@ -10,13 +10,13 @@ import Mode from "./Mode";
 
 const Sidebar: FC = () => {
   return (
-    <div className="flex flex-col bg-stone-100 border-r border-stone-300 w-64">
+    <div className="flex w-64 flex-col border-r border-stone-300 bg-stone-100">
       <div className="flex flex-col px-12 py-3">
         <Chats />
         <Projects />
       </div>
       <Separator className="h-px bg-stone-300" />
-      <div className="flex flex-col px-12 py-3 grow">
+      <div className="flex grow flex-col px-12 py-3">
         <Models />
         <MCP />
         <Usage />

@@ -3,7 +3,7 @@ import { PaperclipIcon } from "lucide-react";
 
 const Attach: FC = () => {
   return (
-    <button className="flex items-center hover:bg-stone-200 p-2 rounded-lg">
+    <button className="flex items-center rounded-lg p-2 hover:bg-stone-200">
       <PaperclipIcon size={20} strokeWidth={1.5} />
     </button>
   );
