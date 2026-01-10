@@ -8,15 +8,15 @@ import Send from "./Send";
 
 const ChatBox: FC = () => {
   return (
-    <div className="flex flex-col w-200 h-37.5 border border-stone-300 bg-stone-100 rounded-lg p-2 shadow-md">
+    <div className="absolute bottom-10 flex h-40 w-200 flex-col rounded-lg border border-stone-300 bg-stone-100 p-2 shadow-md">
       <div className="grow p-2">
         <textarea
-          className="w-full h-full outline-none text-stone-700 resize-none bg-transparent"
+          className="h-full w-full resize-none bg-transparent text-stone-700 outline-none"
           placeholder="Just start typing..."
         />
       </div>
       <div className="flex flex-row items-center gap-2">
-        <div className="flex flex-row text-stone-700 grow">
+        <div className="flex grow flex-row text-stone-700">
           <Attach />
           <Thinking />
           <Settings />
